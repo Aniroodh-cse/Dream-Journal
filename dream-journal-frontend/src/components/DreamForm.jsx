@@ -1,0 +1,50 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const DreamForm = ({ onDreamAdded }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  // Submit form data to the Express API
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Send POST request to the Express backend
+      const response = await axios.post('http://localhost:5000/api/dreams', {
+        title,
+        description,
+      });
+
+      // Callback to update the parent state with the newly added dream
+      onDreamAdded(response.data);
+
+      // Reset the form fields
+      setTitle('');
+      setDescription('');
+    } catch (error) {
+      console.error('Error adding dream:', error.message);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Dream Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
+      <textarea
+        placeholder="Dream Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+      />
+      <button type="submit">Add Dream</button>
+    </form>
+  );
+};
+
+export default DreamForm;
