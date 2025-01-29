@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1 className="app-title">🌙 Dream Journal</h1>
+        <h1 className="app-title">Dream Journal</h1>
       </header>
       <main>
         <DreamForm onDreamAdded={addDream} />
