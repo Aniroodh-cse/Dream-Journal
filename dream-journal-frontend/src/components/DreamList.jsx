@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DreamList = ({ dreams = [] }) => {
-  // Ensure the dreams prop is always an array, even if undefined
+  
   return (
     <div className="dream-list">
       {dreams.length > 0 ? (
@@ -13,7 +13,7 @@ const DreamList = ({ dreams = [] }) => {
           </div>
         ))
       ) : (
-        <p>No dreams to display.</p> // Fallback UI for an empty list
+        <p>No dreams to display.</p> 
       )}
     </div>
   );

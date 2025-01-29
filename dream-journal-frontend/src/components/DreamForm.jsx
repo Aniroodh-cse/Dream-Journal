@@ -5,21 +5,21 @@ const DreamForm = ({ onDreamAdded }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  // Submit form data to the Express API
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Send POST request to the Express backend
+      
       const response = await axios.post('http://localhost:5000/api/dreams', {
         title,
         description,
       });
 
-      // Callback to update the parent state with the newly added dream
+      
       onDreamAdded(response.data);
 
-      // Reset the form fields
+      
       setTitle('');
       setDescription('');
     } catch (error) {

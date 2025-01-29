@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Dream = require('../models/Dream');
 
-// Get all dreams
+
 router.get('/', async (req, res) => {
   try {
     const dreams = await Dream.find();
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Add a new dream
+
 router.post('/', async (req, res) => {
   const { title, description, emotions, tags } = req.body;
   const dream = new Dream({ title, description, emotions, tags });
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Delete a dream
+
 router.delete('/:id', async (req, res) => {
   try {
     await Dream.findByIdAndDelete(req.params.id);
